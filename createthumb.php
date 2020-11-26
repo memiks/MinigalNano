@@ -146,7 +146,7 @@ if (preg_match("/.jpg$|.jpeg$/i", $_GET['filename'])) {
 				$degrees = 180;
 				break;
 			case 6:	// 90 rotate right
-				$degrees = 270;
+				$degrees = -90;
 				break;
 			case 8:	// 90 rotate left
 				$degrees = 90;
@@ -159,7 +159,7 @@ if (preg_match("/.jpg$|.jpeg$/i", $_GET['filename'])) {
 				$flip = 'vertical';
 				break;
 			case 5:	// flipped
-				$degrees = 270;
+				$degrees = -90;
 				$flip = 'vertical';
 				break;
 			case 4:	// flipped
@@ -195,7 +195,8 @@ imagedestroy($source);
 
 //proper rotation by jan niggemann
 if ($degrees != 0) {
-	$target = imagerotate($target, $degrees, 0);
+	$targettmp = imagerotate($target, $degrees, 0);
+	$target = $targettmp;
 }
 
 //proper mirror (aka flip) by jan niggemann
