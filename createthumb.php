@@ -135,7 +135,12 @@ $flip = '';
 if (preg_match("/.jpg$|.jpeg$/i", $_GET['filename'])) {
 	if (function_exists('exif_read_data') && function_exists('imagerotate')) {
 		$exif = exif_read_data($_GET['filename'], 0, true);
-		$ort = $exif['IFD0']['Orientation'];
+		if(!empty($exif['Orientation'])) {
+			$ort = $exif['Orientation'];
+		} else {
+			$ort = $exif['IFD0']['Orientation'];
+		}
+
 		switch ($ort) {
 			case 3:	// 180 rotate right
 				$degrees = 180;
