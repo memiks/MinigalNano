@@ -14,7 +14,7 @@ $gd = "No";
 $thumbs = "No";
 $rotate = "No";
 
-if (version_compare(phpversion(), "5.7", '>')) {
+if (version_compare(phpversion(), "7.3", '>')) {
 	$phpok = "Yes";
 }
 
@@ -101,7 +101,7 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 		<?php echo phpversion();?>
 	</div>
 	<div class="right">
-		<a href="https://www.php.net/" target="_blank">PHP</a> scripting language version 5.7 or greater is needed.
+		<a href="https://www.php.net/" target="_blank">PHP</a> scripting language version 7.3 or greater is needed.
 	</div>
 	<br />
 
