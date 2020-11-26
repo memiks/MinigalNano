@@ -122,9 +122,36 @@ if (preg_match("/.jpg$|.jpeg$/i", $_GET['filename'])) {
 		} else {
 			$ort = $exif['IFD0']['Orientation'];
         }
-    } else {
-        echo "unable to rotate !!";
-    }
-} else {
-    echo "Not a JPG !!";
+
+        print_r($exif);
+
+		switch ($ort) {
+			case 3:	// 180 rotate right
+				$degrees = 180;
+				break;
+			case 6:	// 90 rotate right
+				$degrees = 270;
+				break;
+			case 8:	// 90 rotate left
+				$degrees = 90;
+				break;
+			case 2:	// flip vertical
+				$flip = 'vertical';
+				break;
+			case 7:	// flipped
+				$degrees = 90;
+				$flip = 'vertical';
+				break;
+			case 5:	// flipped
+				$degrees = 270;
+				$flip = 'vertical';
+				break;
+			case 4:	// flipped
+				$degrees = 180;
+				$flip = 'vertical';
+				break;
+		}
+	}
 }
+
+echo "degrees=$degrees";
