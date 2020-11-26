@@ -8,10 +8,16 @@
  */
 
 ini_set("memory_limit", "256M");
+$phpok = "No";
 $exif = "No";
 $gd = "No";
 $thumbs = "No";
 $rotate = "No";
+
+if (version_compare(phpversion(), "5.7", '>')) {
+	$phpok = "Yes";
+}
+
 if (function_exists('exif_read_data')) {
 	$exif = "Yes";
 	if (function_exists('imagerotate')) {
@@ -62,7 +68,7 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 			background-color: #fdffbe;
 			padding: 2px;
 		}
-		.middle-no {
+		.middle-No {
 			font-weight: bold;
 			text-align: center;
 			width: 100px;
@@ -70,7 +76,7 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 			background-color: #ff8181;
 			padding: 2px;
 		}
-		.middle-yes {
+		.middle-Yes {
 			font-weight: bold;
 			text-align: center;
 			width: 100px;
@@ -91,28 +97,18 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 	<div class="left">
 		PHP Version
 	</div>
-	<div class="<?php if (version_compare(phpversion(), "4.0", '>')) {
-	echo 'middle-yes';
-} else {
-	echo 'middle-no';
-}
-?>">
+	<div class="middle-<?php echo $phpok?>">
 		<?php echo phpversion();?>
 	</div>
 	<div class="right">
-		<a href="https://www.php.net/" target="_blank">PHP</a> scripting language version 4.0 or greater is needed.
+		<a href="https://www.php.net/" target="_blank">PHP</a> scripting language version 5.7 or greater is needed.
 	</div>
 	<br />
 
 	<div class="left">
 		GD library support
 	</div>
-	<div class="<?php if ($gd == "Yes") {
-	echo 'middle-yes';
-} else {
-	echo 'middle-no';
-}
-?>">
+	<div class="middle-<?php echo $gd?>">
 		<?php echo $gd;?>
 	</div>
 	<div class="right">
@@ -123,12 +119,7 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 	<div class="left">
 		EXIF support
 	</div>
-	<div  class="<?php if ($exif == "Yes") {
-	echo 'middle-yes';
-} else {
-	echo 'middle-neutral';
-}
-?>">
+	<div  class="middle-<?php echo $exif?>">
 		<?php echo $exif;?>
 	</div>
 	<div class="right">
@@ -139,12 +130,7 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 	<div class="left">
 		Rotation support
 	</div>
-	<div  class="<?php if ($rotate == "Yes") {
-	echo 'middle-yes';
-} else {
-	echo 'middle-neutral';
-}
-?>">
+	<div  class="middle-<?php echo $rotate?>">
 		<?php echo $rotate;?>
 	</div>
 	<div class="right">
@@ -155,12 +141,7 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 	<div class="left">
 		Thumbnails caching
 	</div>
-	<div class="<?php if ($thumbs == "Yes") {
-	echo 'middle-yes';
-} else {
-	echo 'middle-neutral';
-}
-?>">
+	<div class="middle-<?php echo $thumbs?>">
 		<?php echo $thumbs;?>
 	</div>
 	<div class="right">
