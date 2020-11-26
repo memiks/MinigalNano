@@ -163,7 +163,12 @@
 		
 		<script src="<% gallery_root %>js/lazy.js"></script>
 		<script src="<% gallery_root %>js/script.js"></script>
-		<script src="<% gallery_root %>js/bilderrahmen.umd.es5.min-1.0.1.js"></script>
+		<script src="<% gallery_root %>js/require.min.js"></script>
+		<script>
+			require(['//<% gallery_root %>js/bilderrahmen.umd.es5.min-1.0.1.js'], function(module) {
+				new module.Bilderrahmen({ closeOnOutsideClick: true });
+			});
+		</script>
 	</head>
 	<body>
 		<header id="top" role="banner">
