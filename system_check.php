@@ -36,6 +36,7 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 	<title>MiniGal Nano system check</title>
 	<style type="text/css">
 		body {
+			width: 90%;
 			background-color: #daddd8;
 			font: 12px Arial, Tahoma, "Times New Roman", serif;
 		}
@@ -48,7 +49,7 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 			line-height: 20px;
 		}
 		.left {
-			width: 300px;
+			width: 30%;
 			display: inline-table;
 			background-color: #fdffbe;
 			padding: 2px;
@@ -78,7 +79,7 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 			padding: 2px;
 		}
 		.right {
-			width: 600px;
+			width: 60%;
 			display: inline-table;
 			background-color: #eaf1ea;
 			padding: 2px;
