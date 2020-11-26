@@ -11,8 +11,12 @@ ini_set("memory_limit", "256M");
 $exif = "No";
 $gd = "No";
 $thumbs = "No";
+$rotate = "No";
 if (function_exists('exif_read_data')) {
 	$exif = "Yes";
+	if (function_exists('imagerotate')) {
+		$rotate = "Yes";
+	}
 }
 
 if (extension_loaded('gd') && function_exists('gd_info')) {
@@ -95,7 +99,7 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 		<?php echo phpversion();?>
 	</div>
 	<div class="right">
-		<a href="http://www.php.net/" target="_blank">PHP</a> scripting language version 4.0 or greater is needed.
+		<a href="https://www.php.net/" target="_blank">PHP</a> scripting language version 4.0 or greater is needed.
 	</div>
 	<br />
 
@@ -111,7 +115,7 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 		<?php echo $gd;?>
 	</div>
 	<div class="right">
-		<a href="http://www.boutell.com/gd/" target="_blank">GD image manipulation</a> library is used to create thumbnails. Bundled since PHP 4.3.
+		<a href="https://libgd.github.io/" target="_blank">GD image manipulation</a> library is used to create thumbnails. Bundled since PHP 4.3.
 	</div>
 	<br />
 
@@ -128,6 +132,22 @@ if (is_dir('thumbs') && is_writable('thumbs')) {
 	</div>
 	<div class="right">
 		Ability to extract and display <a href="http://en.wikipedia.org/wiki/Exif" target="_blank">EXIF information</a>. The script will work without it, but not display image information.
+	</div>
+	<br />
+
+	<div class="left">
+		Rotation support
+	</div>
+	<div  class="<?php if ($rotate == "Yes") {
+	echo 'middle-yes';
+} else {
+	echo 'middle-neutral';
+}
+?>">
+		<?php echo $rotate;?>
+	</div>
+	<div class="right">
+		Need EXIF ! Ability to <a href="https://www.php.net/manual/en/function.imagerotate.php" target="_blank">rotate image</a>. The script will work without it, but not rotate image regarding EXIF informations.
 	</div>
 	<br />
 
