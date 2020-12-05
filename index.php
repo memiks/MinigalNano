@@ -307,7 +307,7 @@ if (is_dir($current_dir) && $handle = opendir($current_dir)) {
 					"name" => $file,
 					"date" => filemtime($current_dir . "/" . $file),
 					"size" => filesize($current_dir . "/" . $file),
-					"html" => "<li><a href=\"{$linkUrl}\" rel='lightbox[billeder]' ><img $imgopts alt='$label_loading' data-bilderrahmen=\"gallery\" data-bilderrahmen-title=\"" . htmlentities($img_captions[$file]) . "\"/></a>" . $filename_caption . "</li>");
+					"html" => "<li><a href=\"{$linkUrl}\" data-lightbox=\"gallery\" data-image-alt='" . htmlentities($img_captions[$file]) . "' class=\"lightbox\"><img $imgopts alt='" . htmlentities($img_captions[$file]) . "' /></a>" . $filename_caption . "</li>");
 			}
 			// Other filetypes
 			$extension = "";
@@ -358,7 +358,7 @@ if (is_dir($current_dir) && $handle = opendir($current_dir)) {
 					"name" => $file,
 					"date" => filemtime($current_dir . "/" . $file),
 					"size" => filesize($current_dir . "/" . $file),
-					"html" => "<li><a href='$linkUrl' title='$file'><em-pdf>" . padstring($file, 20) . "</em-pdf><span></span><img src='" . GALLERY_ROOT . "images/filetype_" . $extension . ".png' width='$thumb_size' height='$thumb_size' alt='$file' /></a>$filename_caption</li>");
+					"html" => "<li><a href='$linkUrl' data-lightbox=\"gallery\" class=\"lightbox\" title='$file'><em-pdf>" . padstring($file, 20) . "</em-pdf><span></span><img src='" . GALLERY_ROOT . "images/filetype_" . $extension . ".png' width='$thumb_size' height='$thumb_size' alt='$file' /></a>$filename_caption</li>");
 			}
 		}
 	}

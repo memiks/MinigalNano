@@ -14,5 +14,4 @@
 
 $title = "Your Own MiniGal Nano";
 $templatefile = "board"; // Template filename (must be placed in 'templates' folder)
-
-?>
+$display_exif = 1;

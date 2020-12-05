@@ -4,6 +4,6 @@ window.addEventListener('load', function(){
 }, false);
 
 /*=== Message close ===*/
-document.getElementById('closeMessage').addEventListener('click', function(){
+/*document.getElementById('closeMessage').addEventListener('click', function(){
 	document.getElementById('Message').style.display = 'none';
-});
+});*/
